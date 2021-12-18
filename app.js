@@ -1,10 +1,12 @@
 const submitBtn = document.querySelector('[data-submit-Btn]');
 
-let form = document.querySelector('form');
+ let feetValue = document.getElementById('ft');
+ let inchValue = document.getElementById('inch');
 
+let form = document.querySelector('form');		
+ 
 //this will show the output of converted height
 let span = document.createElement('span');
-
 
 //creating different functions to practice callback function and creating different function for different things
 function feetAndInchToCm(feet, inch) {
@@ -14,26 +16,23 @@ function feetAndInchToCm(feet, inch) {
 		} else if (feet !== '' && inch == '') {
 			span.textContent = parseInt((feet * 30.48)).toFixed(2) + 'cm';
 		}	 else if (feet == '' && inch !== '') {
-				alert('You c;an\'t be Hobbit, right?');								
+				 span.textContent = parseInt((inch * 2.54)).toFixed(1) + 'cm';				
 		};
 }
 
 
-function calculatedValue() {
- let feetValue = document.getElementById('ft').value;
- let inchValue = document.getElementById('inch').value;
-		
+function calculatedValue() { 
 		//checking if the feet and cm values aren't empty
-		if (isNaN(feetValue) || isNaN(inchValue)) {
+if (isNaN(feetValue.value) || isNaN(inchValue.value)) {
 				alert('Enter a number value');
-		} else if (feetValue == '' && inchValue == '') {
+		} else if (feetValue.value == '' && inchValue.value == '') {
 				alert('Enter a number');
 		}
-				feetAndInchToCm(feetValue, inchValue);
+				feetAndInchToCm(feetValue.value, inchValue.value);
 				//append the calculated value
 				form.appendChild(span);
-				feetValue = '';
-				inchValue = '';				
+				feetValue.value = '';
+				inchValue.value = '';				
 }
 
 submitBtn.addEventListener('click', (event) => {
